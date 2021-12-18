@@ -1,0 +1,15 @@
+server:
+  port: 9090
+
+spring:
+  application:
+    name: cloud-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: auth-server
+          uri: http://localhost:8097   #匹配后提供服务的路由地址
+          predicates:
+            Path=/auth/captcha
+          filters:
+            - AddCookiesResponse=test, ttt

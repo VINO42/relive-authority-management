@@ -1,0 +1,47 @@
+server:
+  port: 8097
+
+spring:
+  application:
+    name: auth-server
+  datasource:
+    druid:
+      db-type: mysql
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://47.98.219.73:3306/auth?createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+      username: root
+      password: qwedzxc
+  flyway:
+    baseline-on-migrate: true
+    baseline-description: <<Flyway Baseline>>
+    enabled: true
+    check-location: true
+    locations: classpath:db/migration
+    validate-on-migrate: true
+  redis:
+    host: 47.98.219.73
+    database: 0
+    port: 6379
+    timeout: 18000
+    lettuce:
+      pool:
+        max-active: 20
+        max-wait: -1
+        max-idle: 5
+        min-idle: 0
+      shutdown-timeout: 100
+  servlet:
+    multipart:
+      max-file-size: 500MB
+      max-request-size: 500MB
+
+logging:
+  level:
+    org:
+      springframework:
+        security: INFO
+
+mybatis-plus:
+  global-config:
+    db-config:
+      id-type: auto
